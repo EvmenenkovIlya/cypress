@@ -4,7 +4,7 @@ describe( "Log in", ()=> {
     });
 
     it("ResetBotton",  function() {   
-        cy.fillLoginAndPassword('1303', 'Guru99')    
+        cy.fillLoginAndPassword(validLoginAndPassword)    
         cy.get('input[type = "reset"]').click()    
         cy.get('input[type = "text"]').should("have.text", '');
         cy.get('input[type = "password"]').should("have.text", '');
@@ -54,7 +54,7 @@ describe( "Log in", ()=> {
         //messageContainsError
     });
 })
-Cypress.Commands.add("fillLoginAndPassword", (login, password ) => {
+Cypress.Commands.add("fillLoginAndPassword", ({login, password} ) => {
     cy.get('input[type = "text"]').type(login)
     cy.get('input[type = "password"]').type(password)
 });
